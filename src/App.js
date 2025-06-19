@@ -121,8 +121,8 @@ export default function App() {
     padding: "0.7em 1em",
     borderRadius: "12px",
     border: "1px solid #e2e3e8",
-    background: noMealDay ? "#f5f5f7" : "#fff",
-    color: noMealDay ? "#bababa" : "#23272e",
+    background: "#fff",
+    color: "#23272e",
     outline: "none",
     fontWeight: 500,
     boxSizing: "border-box",
@@ -146,20 +146,13 @@ export default function App() {
   };
 
   let mealCardContent;
+  const noInfoStyle = { fontSize: "0.93em", color: "#bcbcbc", textAlign: "center" };
   if (loading) {
     mealCardContent = <div style={{ color: "#bbb", fontSize: "1.1em" }}>로딩중...</div>;
-  } else if (error) {
-    mealCardContent = <div style={{ color: "#e65555", fontSize: "1.07em" }}>{error}</div>;
-  } else if (noMealDay) {
+  } else if (error || noMealDay || (meals && meals.length === 0) || (!selectedMealRow && meals)) {
     mealCardContent = (
-      <div style={{ color: "#bcbcbc", fontSize: "1.05em", textAlign: "center" }}>
-        <span role="img" aria-label="no-meal">🍽️</span> 주말은 급식이 없습니다.
-      </div>
-    );
-  } else if (meals && meals.length === 0) {
-    mealCardContent = (
-      <div style={{ color: "#bcbcbc", fontSize: "1.05em", textAlign: "center" }}>
-        <span role="img" aria-label="no-meal">🍽️</span> 급식이 없습니다.
+      <div style={noInfoStyle}>
+        등록된 정보가 없습니다.
       </div>
     );
   } else if (selectedMealRow) {
@@ -173,12 +166,6 @@ export default function App() {
             {allergy && <span style={menuAllergy}>({allergy})</span>}
           </div>
         ))}
-      </div>
-    );
-  } else {
-    mealCardContent = (
-      <div style={{ color: "#bcbcbc", fontSize: "1.05em", textAlign: "center" }}>
-        <span role="img" aria-label="no-meal">🍽️</span> 급식이 없습니다.
       </div>
     );
   }
@@ -216,7 +203,6 @@ export default function App() {
             value={selectedDate}
             onChange={e => setSelectedDate(e.target.value)}
             style={dateInputStyle}
-            disabled={noMealDay}
           />
         </div>        
         <div style={{ display: "flex", gap: "10px", marginTop: 13, marginBottom: 7 }}>
