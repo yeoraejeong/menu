@@ -188,12 +188,12 @@ export default function App() {
     >
       <div
         style={{
-          maxWidth: 430,
+          maxWidth: 460,
           margin: "0 auto",
-          padding: "36px 3vw 26px 3vw",
+          padding: "70px 7vw 50px 7vw",
         }}
       >
-        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "13px"}}>
+        <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "22px"}}>
           <h2 style={{
             fontWeight: 700,
             fontSize: "1.35em",
@@ -238,7 +238,7 @@ export default function App() {
             );
           })}
         </div>
-        <div style={iosCard}>
+        <div style={{ ...iosCard, marginTop: "2.8em", marginBottom: "2.5em" }}>
           {mealCardContent}
         </div>
       </div>
