@@ -94,7 +94,7 @@ export default function App() {
     background: "#f4f5f8",
     border: "none",
     borderRadius: "12px",
-    fontSize: "0.95em",
+    fontSize: "0.93em",
     padding: "0.7em 0",
     margin: "0 7px",
     flex: 1,
@@ -103,11 +103,16 @@ export default function App() {
     cursor: "pointer",
     outline: "none",
     transition: "background .2s, box-shadow .2s",
+    color: "#23272e",
+    WebkitAppearance: "none",
+    MozAppearance: "none",
+    appearance: "none",
   };
   const iosBtnSel = {
     background: "#f7fafd",
     boxShadow: "0 3.5px 16px 0 rgba(30,35,90,0.10)",
-    border: "1.5px solid #e6ecf5"
+    border: "1.5px solid #e6ecf5",
+    color: "#23272e",
   };
   const iosBtnGray = {
     background: "#f6f6f7",
@@ -224,7 +229,8 @@ export default function App() {
                   ...iosBtn,
                   ...(isSelected ? iosBtnSel : {}),
                   ...(disabled ? iosBtnGray : {}),
-                  fontSize: "1.05em"
+                  fontSize: "0.93em",
+                  color: disabled ? iosBtnGray.color : (isSelected ? iosBtnSel.color : iosBtn.color),
                 }}
               >
                 {label}
